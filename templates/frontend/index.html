@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Theme Park Ticket Booking</title>
+        <link href="/static/css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    </head>
+    <body>
+        <div class="container">
+            <h1>🎢 Theme Park Ticket Booking</h1>
+            
+            {% if messages %}
+            <div class="messages-container">
+                {% for message in messages %}
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        {{ message|safe }}
+                        <button type="button" class="close alert-close" onclick="this.parentElement.style.display='none';">&times;</button>
+                    </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <!-- Header Info -->
+            <form class="forms-sample" action="{% url 'create-bokking' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+            <div class="grid-4">
+                <div>
+                    <label>Booking Name</label>
+                    <input type="text" id="bookingName" name="booking_name" placeholder="Enter booking name" required/>
+                </div>
+                <div>
+                    <label>Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter Phone Number" required/>
+                </div>
+                <div>
+                    <label>Location</label>
+                    <input type="text" id="location" name="location" placeholder="Enter Location" required/>
+                </div>
+                <div>
+                    <label>Date</label>
+                    <input type="date" id="date" name="date" required/>
+                </div>
+                
+            </div>
+            <!-- People Section -->
+            <div id="peopleList"></div>
+
+            <div style="text-align: right; margin-top: 10px;">
+                <button class="add-btn" id="addPerson">+ Add Person</button>
+            </div>
+            <div style="text-align:center; margin-top:20px;">
+                <button  type="button" class="submit-btn" id="submitBooking">Continue Booking</button>
+            </div>
+        </div>
+        <template id="personTemplate">
+            <div class="person-card">
+                <div class="person-header">
+                <input type="text" class="person-name" placeholder="Enter person name"  name="person_name[]" required/>
+                <input type="hidden" class="person-ride" name="person_ride[]" />
+                <button class="remove-btn">Remove</button>
+                </div>
+                <div class="ride-buttons">
+                <button type="button" class="ride-btn">Roller Coaster</button>
+                <button type="button" class="ride-btn">Ferris Wheel</button>
+                <button type="button" class="ride-btn">Splash River</button>
+                <button type="button" class="ride-btn">Haunted House</button>
+                <button type="button" class="ride-btn">Kids Carousel</button>
+                <button type="button" class="ride-btn">All Access Pass</button>
+                </div>
+            </div>
+        </template>
+
+        <div class="container" id="paymentSection" style="display:none;">
+            <h1 style="text-align:center; color:#274571;"><i class="fas fa-money-bill-wave"></i> Payment</h1>
+            <p style="text-align:center; color:#555;">Please choose your payment method</p>
+
+            <div class="payment-cards">
+                <input type="radio" name="payment" id="cashRadio" value="Cash" hidden>
+                <label class="payment-card" for="cashRadio">
+                    <i class="fas fa-money-bill-wave fa-3x"></i>
+                    <h3>Cash</h3>
+                    <p>Pay with cash at counter</p>
+                </label>
+
+                <input type="radio" name="payment" id="upiRadio" value="UPI" hidden>
+                <label class="payment-card" for="upiRadio" id="upiLabel">
+                    <i class="fas fa-mobile-alt fa-3x"></i>
+                    <h3>UPI</h3>
+                    <p>Pay via UPI apps (PhonePe, PayTM, GPay)</p>
+                </label>
+            </div>
+            <div style="text-align:center; margin-top:20px;">
+                <button type="submit" class="" id="printBtn">Submit Booking</button>
+            </div>
+
+        </div>
+        </form>
+        <script src="/static/js/main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,321 @@
+body {
+      font-family: "Poppins", sans-serif;
+      background: #f3f6fb;
+      margin: 0;
+      color: #222;
+    }
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      padding: 20px 30px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #274571;
+    }
+    .grid-4 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+        gap: 15px;
+        margin-bottom: 20px;
+        }
+
+        .grid-4 input {
+        width: 100%; /* ensure input fills column */
+        box-sizing: border-box; /* include padding/border in width */
+        }
+
+    label {
+      font-size: 14px;
+      color: #666;
+      display: block;
+      margin-bottom: 5px;
+    }
+    input {
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      border: 2px solid #e5e7eb;
+      border-radius: 10px;
+      background: #f9fafb;
+    }
+    .person-card {
+      background: #f9fafb;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+    
+    .ride-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .ride-btn {
+      flex: 1 1 calc(33.3% - 10px);
+      text-align: center;
+      background: #e9ecef;
+      border: none;
+      padding: 14px 10px;
+      font-size: 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .ride-btn.active {
+      background: #274571;
+      color: white;
+      transform: scale(1.03);
+    }
+    .ride-btn:hover {
+      background: #cfe2ff;
+    }
+    
+    
+    .add-btn {
+        background: #274571;
+        color: #fff;
+        padding: 8px 12px;  /* smaller */
+        font-size: 14px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .add-btn:hover { background: #0b5ed7; }
+
+    .submit-btn {
+    /* width: 100%;     
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 12px;
+    border: none;
+    background: #198754;
+    color: #fff;
+    margin-top: 20px;
+    cursor: pointer; */
+   
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background: #198754;
+    color: #fff;
+    transition: 0.2s;
+    }
+
+    .submit-btn:hover { background: #157347; }
+
+
+    .person-header {
+    display: flex;
+    justify-content: space-between; /* Name on left, remove on right */
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    }
+
+    .person-header input.person-name {
+    flex: 1;          /* take remaining space */
+    }
+
+    .remove-btn {
+    background: #793031;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    flex-shrink: 0;   /* prevent shrinking */
+    }
+
+
+
+
+    .payment-cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    }
+
+    .payment-card {
+    flex: 1 1 200px;
+    max-width: 250px;
+    background: #f9fafb;
+    border: 2px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .payment-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .payment-card i {
+    margin-bottom: 15px;
+    color: #274571;
+    }
+
+    .payment-card h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #222;
+    }
+
+    .payment-card p {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+    }
+
+    /* UPI card color */
+    /* #upiBtn i {
+    color: #fff;
+    }
+
+    #upiBtn {
+    background: #274571;
+    color: #fff;
+    } */
+
+.payment-card i {
+    margin-bottom: 10px;
+    color: #111; /* default icon color */
+}
+
+/* Selected state */
+.payment-card.selected {
+    background: #274571;
+    color: #fff;           /* text color */
+    border-color: #274571;
+}
+
+.payment-card.selected i {
+    color: #fff;           /* icon color */
+}
+
+
+#printBtn {
+  display: none; /* initially hidden */
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: #198754; /* primary color */
+  color: #fff;
+  transition: 0.2s;
+}
+
+#printBtn:hover {
+  background: #0b5ed7; /* darker on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+
+/* Payment card base */
+.payment-card {
+  flex: 1 1 200px;
+  max-width: 250px;
+  background: #f9fafb;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  margin: 10px;
+}
+
+.payment-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* General selected style */
+input[type="radio"]:checked + .payment-card {
+  border-color: #0d6efd;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Cash selected */
+#cashRadio:checked + .payment-card {
+  background-color: #d1e7dd;
+  color: #222;
+}
+
+/* UPI selected */
+#upiRadio:checked + #upiLabel {
+  background-color: #97b9ec;
+  color: #274571;
+}
+
+/* Icon color changes for selected card */
+#cashRadio:checked + .payment-card i {
+  color: #274571;  /* dark icon for cash */
+}
+
+#upiRadio:checked + #upiLabel i {
+  color: #274571; /* white icon for UPI */
+}
+
+/* Card content */
+.payment-card i {
+  margin-bottom: 15px;
+  color: #274571; /* default icon color */
+}
+
+.payment-card h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.payment-card p {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+
+.messages-container{
+    top: 20px; 
+    right: 20px; 
+    z-index: 9999;
+    margin-bottom: 50px;
+}
+.alert-success{
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border: 1px solid #c3e6cb;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    min-width: 250px;
+}
+
+.alert-close{
+    background: none;
+    border: none;
+    float: right;
+    font-size: 18px;
+    font-weight: bold;
+    color: #155724;
+    cursor: pointer;
+}
